@@ -17,6 +17,8 @@ Opcje -d i -r mog¹ wystêpowaæ z opcj¹ -ot albo -ob*/
 #include<stdlib.h>
 #include<string.h>
 
+#define ROZMIAR 1024
+
 typedef struct HexByte_
 {
 	char bajt_hex[2]; // reprezntacja bajtu w postaci 16-owej (ascii)
@@ -80,7 +82,10 @@ void wczytaj_plik(char* nazwa_pliku)
 	FILE *pliczek;
 	pliczek = fopen(nazwa_pliku, "rb");
 
+	char* bufor;
+	bufor = (char*)malloc(ROZMIAR * sizeof(char));
 
+	fread(bufor, sizeof(char), ROZMIAR, pliczek);
 }
 
 int main(int argc, char** argv)
